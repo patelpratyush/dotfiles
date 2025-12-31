@@ -1,5 +1,17 @@
 # Stow local ignore list
-coolnight.itermcolors
+
+# Git files (should be in dotfiles repo only, not stowed)
+\.git
+\.gitignore
+\.gitmodules
+
+# README and license files
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
+
+# Files that shouldn't be stowed
+coolnight.itermcolors
+
+# Config directories with secrets
+^/\.config/github-copilot
