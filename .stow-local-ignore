@@ -1,0 +1,5 @@
+# Stow local ignore list
+coolnight.itermcolors
+^/README.*
+^/LICENSE.*
+^/COPYING

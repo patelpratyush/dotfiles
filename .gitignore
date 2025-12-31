@@ -1,0 +1,15 @@
+# macOS system files
+.DS_Store
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# Secrets and local configs (add specific files you don't want to commit)
+# .config/gh/hosts.yml
+# .config/git/config (if it contains personal info)
+
+# Raycast extensions
+.config/raycast/extensions/
+
