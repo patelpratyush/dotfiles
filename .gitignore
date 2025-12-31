@@ -13,3 +13,6 @@
 # Raycast extensions
 .config/raycast/extensions/
 
+# GitHub Copilot tokens
+.config/github-copilot/
+
