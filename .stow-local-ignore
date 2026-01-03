@@ -12,6 +12,8 @@
 
 # Files that shouldn't be stowed
 coolnight.itermcolors
+\.DS_Store
+\.wezterm\.lua\.BAk
 
 # Config directories with secrets
 ^/\.config/github-copilot

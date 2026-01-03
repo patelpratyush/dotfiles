@@ -16,3 +16,6 @@
 # GitHub Copilot tokens
 .config/github-copilot/
 
+.DS_Store
+*.BAk
+*.bak
