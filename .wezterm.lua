@@ -28,8 +28,8 @@ config.initial_cols = 80
 config.initial_rows = 30
 config.default_cursor_style = "SteadyBar"
 
--- config.window_background_opacity = 0.8
--- config.macos_window_background_blur = 10
+config.window_background_opacity = 0.80
+config.macos_window_background_blur = 20
 
 -- and finally, return the configuration to wezterm
 return config
