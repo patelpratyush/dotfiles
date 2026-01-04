@@ -303,8 +303,8 @@ config.key_tables = {
 
 -- Window
 config.bold_brightens_ansi_colors = true
-config.initial_cols = 80
-config.initial_rows = 30
+config.initial_cols = 120
+config.initial_rows = 40
 config.foreground_text_hsb = {
   brightness = 1.0,
   hue        = 1.0,
