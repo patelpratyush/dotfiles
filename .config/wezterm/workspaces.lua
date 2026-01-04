@@ -10,18 +10,6 @@ W.workspaces = {
 			name = "home",
 			path = home,
 		},
-		{
-			type = "personal",
-			workspace = "dotfiles",
-			name = "project",
-			path = home .. "/Repositories/personal/gitlab.com/username/dotfiles",
-		},
-		{
-			type = "work",
-			workspace = "project",
-			name = "project",
-			path = home .. "/Repositories/work/gitlab.com/project",
-		},
 	},
 }
 
