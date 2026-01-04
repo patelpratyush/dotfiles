@@ -41,29 +41,28 @@ if os.getenv("XDG_SESSION_TYPE") == "x11" then
 end
 
 -- Colorscheme
--- config.color_scheme = F.scheme_for_appearance(
---   wezterm.gui.get_appearance(),
---   custom.color_scheme.dark,
---   custom.color_scheme.light
--- )
--- colors = wezterm.get_builtin_color_schemes()[config.color_scheme]
+config.color_scheme = F.scheme_for_appearance(
+  wezterm.gui.get_appearance(),
+  custom.color_scheme.dark,
+  custom.color_scheme.light
+)
+colors = wezterm.get_builtin_color_schemes()[config.color_scheme]
 
--- Custom color scheme
 config.colors = {
-  foreground = "#CBE0F0",
-  background = "#011423",
-  cursor_bg = "#47FF9C",
-  cursor_border = "#47FF9C",
-  cursor_fg = "#011423",
-  selection_bg = "#033259",
-  selection_fg = "#CBE0F0",
-  ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-  brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
-  indexed = { [16] = "#47FF9C" },
+  compose_cursor = colors.ansi[2],
+  cursor_bg = colors.indexed[16],
+  cursor_border = colors.indexed[16],
+  split = colors.indexed[16],
+  tab_bar = {
+    background = colors.background,
+    active_tab = {
+      bg_color = colors.background,
+      fg_color = colors.indexed[16],
+      italic = true,
+    },
+  },
+  visual_bell = colors.ansi[1]
 }
-
--- Map colors for compatibility with existing code
-colors = config.colors
 
 -- Bell
 config.visual_bell = {
