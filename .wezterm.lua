@@ -137,6 +137,7 @@ config.keys = {
   },
   { key = "p",          mods = "CTRL",         action = action.PasteFrom("Clipboard")                                 },
   { key = "q",          mods = "LEADER",       action = action.QuitApplication                                        },
+  { key = "q",          mods = "SUPER",        action = action.QuitApplication                                        },
   { key = "s",          mods = "LEADER",       action = action.Multiple {
                                                           action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" },
                                                           action.EmitEvent "set-previous-workspace"
@@ -146,6 +147,7 @@ config.keys = {
   { key = "t",          mods = "LEADER",       action = action.ShowLauncherArgs { flags = "TABS" }                    },
   { key = "v",          mods = "LEADER",       action = action.ActivateCopyMode                                       },
   { key = 'w',          mods = 'LEADER',       action = action.CloseCurrentPane { confirm = true },                   },
+  { key = "w",          mods = "SUPER",        action = action.CloseCurrentPane { confirm = false },                  },
   { key = "y",          mods = "CTRL",         action = action.Multiple {
                                                           action.CopyTo("ClipboardAndPrimarySelection"),
                                                           action.ClearSelection
