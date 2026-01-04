@@ -143,6 +143,7 @@ config.keys = {
   },
   { key = "p",          mods = "CTRL",         action = action.PasteFrom("Clipboard")                                 },
   { key = "v",          mods = "SUPER",        action = action.PasteFrom("Clipboard")                                 },
+  { key = "f",          mods = "SUPER",        action = action.Search { CaseInSensitiveString = "" }                  },
   { key = "/",          mods = "SUPER",        action = action.Search { CaseInSensitiveString = "" }                  },
   { key = "q",          mods = "LEADER",       action = action.QuitApplication                                        },
   { key = "q",          mods = "SUPER",        action = action.QuitApplication                                        },
