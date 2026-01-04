@@ -308,8 +308,8 @@ config.foreground_text_hsb = {
   hue        = 1.0,
   saturation = 1.0,
 }
-config.text_background_opacity = 1.0
-config.window_background_opacity = 1.0
+config.text_background_opacity = 0.9
+config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.window_padding = {
   left   = 3,
@@ -345,7 +345,7 @@ config.mouse_bindings = {
 
 -- Font
 config.font = wezterm.font("JetBrainsMonoNL Nerd Font")
-config.font_size = 14
+config.font_size = 12
 
 -- Hyperlink
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
