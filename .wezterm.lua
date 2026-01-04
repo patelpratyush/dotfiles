@@ -85,7 +85,7 @@ config.use_ime = false
 
 -- Keys Mapping
 config.disable_default_key_bindings = true
-config.leader = { key = "f", mods = "CTRL", timeout_milliseconds = custom.timeout.leader }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = custom.timeout.leader }
 config.keys = {
   { key = "o", mods = "LEADER",
       action = action.ActivateKeyTable {
@@ -121,8 +121,14 @@ config.keys = {
   },
 
   { key = "c",          mods = "LEADER",       action = action.ShowLauncherArgs { flags = "FUZZY|LAUNCH_MENU_ITEMS" } },
+  { key = "c",          mods = "SUPER",        action = action.CopyTo("ClipboardAndPrimarySelection")                 },
   { key = "d",          mods = "LEADER",       action = action.ShowDebugOverlay                                       },
   { key = "h",          mods = "LEADER",       action = action.ActivateCommandPalette                                 },
+  { key = "k",          mods = "SUPER",        action = action.Multiple {
+                                                          action.ClearScrollback "ScrollbackAndViewport",
+                                                          action.EmitEvent "flash-terminal"
+                                                        }
+  },
   { key = "l",          mods = "CTRL|SHIFT",   action = action.Multiple {
                                                           action.ClearScrollback "ScrollbackOnly",
                                                           action.EmitEvent "flash-terminal"
@@ -136,6 +142,8 @@ config.keys = {
                                                 }
   },
   { key = "p",          mods = "CTRL",         action = action.PasteFrom("Clipboard")                                 },
+  { key = "v",          mods = "SUPER",        action = action.PasteFrom("Clipboard")                                 },
+  { key = "/",          mods = "SUPER",        action = action.Search { CaseInSensitiveString = "" }                  },
   { key = "q",          mods = "LEADER",       action = action.QuitApplication                                        },
   { key = "q",          mods = "SUPER",        action = action.QuitApplication                                        },
   { key = "s",          mods = "LEADER",       action = action.Multiple {
@@ -144,10 +152,13 @@ config.keys = {
                                                 }
   },
   { key = "t",          mods = "CTRL",         action = action.SpawnTab("DefaultDomain")                              },
+  { key = "t",          mods = "SUPER",        action = action.SpawnTab("DefaultDomain")                              },
   { key = "t",          mods = "LEADER",       action = action.ShowLauncherArgs { flags = "TABS" }                    },
   { key = "v",          mods = "LEADER",       action = action.ActivateCopyMode                                       },
   { key = 'w',          mods = 'LEADER',       action = action.CloseCurrentPane { confirm = true },                   },
   { key = "w",          mods = "SUPER",        action = action.CloseCurrentPane { confirm = false },                  },
+  { key = "[",          mods = "SUPER|SHIFT",  action = action.ActivateTabRelative(-1)                                },
+  { key = "]",          mods = "SUPER|SHIFT",  action = action.ActivateTabRelative(1)                                 },
   { key = "y",          mods = "CTRL",         action = action.Multiple {
                                                           action.CopyTo("ClipboardAndPrimarySelection"),
                                                           action.ClearSelection
@@ -155,29 +166,46 @@ config.keys = {
   },
   { key = "z",          mods = "LEADER",       action = action.TogglePaneZoomState,                                   },
   { key = "DownArrow",  mods = "ALT",          action = action.ActivatePaneDirection("Down")                          },
+  { key = "DownArrow",  mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Down")                          },
   { key = "DownArrow",  mods = "SHIFT",        action = action.ScrollByLine(1)                                        },
   { key = "End",        mods = "SHIFT",        action = action.ScrollToBottom                                         },
   { key = "Home",       mods = "SHIFT",        action = action.ScrollToTop                                            },
   { key = "LeftArrow",  mods = "ALT",          action = action.ActivatePaneDirection("Left")                          },
+  { key = "LeftArrow",  mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Left")                          },
   { key = "PageDown",   mods = "SHIFT",        action = action.ScrollByPage(1)                                        },
   { key = "PageUp",     mods = "SHIFT",        action = action.ScrollByPage(-1)                                       },
   { key = "RightArrow", mods = "ALT",          action = action.ActivatePaneDirection("Right")                         },
+  { key = "RightArrow", mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Right")                         },
   { key = "UpArrow",    mods = "ALT",          action = action.ActivatePaneDirection("Up")                            },
+  { key = "UpArrow",    mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Up")                            },
   { key = "UpArrow",    mods = "SHIFT",        action = action.ScrollByLine(-1)                                       },
   { key = "0",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-reset"                       },
   { key = "0",          mods = "CTRL",         action = action.ResetFontSize                                          },
+  { key = "0",          mods = "SUPER",        action = action.ResetFontSize                                          },
   { key = "-",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-minus"                       },
   { key = "-",          mods = "CTRL",         action = action.DecreaseFontSize                                       },
+  { key = "-",          mods = "SUPER",        action = action.DecreaseFontSize                                       },
   { key = "=",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-plus"                        },
   { key = "=",          mods = "CTRL",         action = action.IncreaseFontSize                                       },
+  { key = "=",          mods = "SUPER",        action = action.IncreaseFontSize                                       },
   { key = "[",          mods = "ALT",          action = action.ActivateTabRelative(-1)                                },
   { key = "[",          mods = "ALT|CTRL",     action = action.Multiple {
                                                           action.SwitchWorkspaceRelative(-1),
                                                           action.EmitEvent "set-previous-workspace"
                                                         }
   },
+  { key = "[",          mods = "SUPER|ALT",    action = action.Multiple {
+                                                          action.SwitchWorkspaceRelative(-1),
+                                                          action.EmitEvent "set-previous-workspace"
+                                                        }
+  },
   { key = "]",          mods = "ALT",          action = action.ActivateTabRelative(1)                                 },
   { key = "]",          mods = "ALT|CTRL",     action = action.Multiple {
+                                                          action.SwitchWorkspaceRelative(1),
+                                                          action.EmitEvent "set-previous-workspace"
+                                                        }
+  },
+  { key = "]",          mods = "SUPER|ALT",    action = action.Multiple {
                                                           action.SwitchWorkspaceRelative(1),
                                                           action.EmitEvent "set-previous-workspace"
                                                         }
@@ -216,6 +244,7 @@ config.keys = {
 -- Active tab by index
 for i = 1, 9 do
   table.insert(config.keys, { key = tostring(i), mods = "ALT", action = action.ActivateTab(i - 1) })
+  table.insert(config.keys, { key = tostring(i), mods = "SUPER", action = action.ActivateTab(i - 1) })
 end
 
 config.key_tables = {
