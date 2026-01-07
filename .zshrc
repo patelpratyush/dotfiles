@@ -210,3 +210,4 @@ alias omnios631='ssh ppatel10@omnios.cs631.dotwtf.wtf'
 # Added by Antigravity
 export PATH="/Users/pratyush/.antigravity/antigravity/bin:$PATH"
 cursor() { /Applications/Cursor.app/Contents/Resources/app/bin/code "$@" 2>/dev/null; }
+export PATH="/usr/local/opt/python@3.14/libexec/bin:$PATH"
