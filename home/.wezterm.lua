@@ -342,6 +342,7 @@ config.foreground_text_hsb = {
 }
 config.text_background_opacity = 0.9
 config.window_background_opacity = 0.9
+config.macos_window_background_blur = 15
 config.window_decorations = "RESIZE"
 config.window_padding = {
   left   = 3,
