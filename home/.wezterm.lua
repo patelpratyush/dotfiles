@@ -448,12 +448,10 @@ wezterm.on("update-status", function(window, pane)
   if cwd then
     if type(cwd) == "userdata" then
       -- Wezterm introduced the URL object in 20240127-113634-bbcac864
-      if string.len(cwd.path) > config.tab_max_width then
-        cwd = ".." .. string.sub(cwd.path, config.tab_max_width * -1, -1)
-      else
-        cwd = cwd.path
-      end
+      cwd = cwd.path
     end
+    -- Extract only the folder name (basename)
+    cwd = cwd:match("([^/]+)/?$") or cwd
   else
     cwd = ""
   end
