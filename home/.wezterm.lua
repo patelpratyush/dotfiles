@@ -457,6 +457,18 @@ wezterm.on("update-status", function(window, pane)
     cwd = ""
   end
 
+  -- RAM usage
+  local ram_percent = "..."
+  local ram_gb = "..."
+  local success_gb, stdout_gb = wezterm.run_child_process({"sh", "-c", "ps -caxm -orss= | awk '{sum+=$1} END {print sum/1024/1024}'"})
+  local success_pct, stdout_pct = wezterm.run_child_process({"sh", "-c", "ps -A -o %mem | awk '{s+=$1} END {print s}'"})
+  if success_gb then
+    ram_gb = string.format("%.1fGB", tonumber(stdout_gb) or 0)
+  end
+  if success_pct then
+    ram_percent = string.format("%.1f%%", tonumber(stdout_pct) or 0)
+  end
+
   -- Left status (left of the tab line)
   window:set_left_status(wezterm.format({
     { Attribute  = { Intensity = "Bold" }                       },
@@ -519,6 +531,20 @@ wezterm.on("update-status", function(window, pane)
     { Background = { Color = colors.ansi[1] }            },
     { Foreground = { Color = colors.foreground }         },
     { Text       = " " .. custom.hostname.current        },
+    { Background = { Color = colors.background }         },
+    { Foreground = { Color = colors.ansi[1] }            },
+    { Text       = nerdfonts.ple_right_half_circle_thick },
+
+    { Text       = " "                                   },
+    { Background = { Color = colors.background }         },
+    { Foreground = { Color = colors.ansi[5] }            },
+    { Text       = nerdfonts.ple_left_half_circle_thick  },
+    { Background = { Color = colors.ansi[5] }            },
+    { Foreground = { Color = colors.background }         },
+    { Text       = nerdfonts.md_memory .. " "            },
+    { Background = { Color = colors.ansi[1] }            },
+    { Foreground = { Color = colors.foreground }         },
+    { Text       = " " .. ram_percent .. " " .. ram_gb   },
     { Background = { Color = colors.background }         },
     { Foreground = { Color = colors.ansi[1] }            },
     { Text       = nerdfonts.ple_right_half_circle_thick },
