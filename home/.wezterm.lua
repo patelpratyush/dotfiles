@@ -515,7 +515,7 @@ wezterm.on("update-status", function(window, pane)
     { Text       = nerdfonts.ple_left_half_circle_thick  },
     { Background = { Color = colors.ansi[7] }            },
     { Foreground = { Color = colors.ansi[1] }            },
-    { Text       = nerdfonts.md_laptop .. " "            },
+    { Text       = nerdfonts.md_monitor .. " "           },
     { Background = { Color = colors.ansi[1] }            },
     { Foreground = { Color = colors.foreground }         },
     { Text       = " " .. custom.hostname.current        },
