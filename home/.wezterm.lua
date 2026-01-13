@@ -85,7 +85,7 @@ config.use_ime = false
 
 -- Keys Mapping
 config.disable_default_key_bindings = true
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = custom.timeout.leader }
+-- config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = custom.timeout.leader }
 config.keys = {
   { key = "o", mods = "LEADER",
       action = action.ActivateKeyTable {
@@ -129,11 +129,11 @@ config.keys = {
                                                           action.EmitEvent "flash-terminal"
                                                         }
   },
-  { key = "l",          mods = "CTRL|SHIFT",   action = action.Multiple {
-                                                          action.ClearScrollback "ScrollbackOnly",
-                                                          action.EmitEvent "flash-terminal"
-                                                        }
-  },
+  -- { key = "l",          mods = "CTRL|SHIFT",   action = action.Multiple {
+  --                                                        action.ClearScrollback "ScrollbackOnly",
+  --                                                        action.EmitEvent "flash-terminal"
+  --                                                      }
+  -- },
   { key = "l",          mods = "LEADER",       action = action.Multiple {
                                                           wezterm.action_callback(function(window,pane)
                                                             F.switch_previous_workspace(window,pane)
@@ -141,7 +141,7 @@ config.keys = {
                                                           action.EmitEvent "set-previous-workspace"
                                                 }
   },
-  { key = "p",          mods = "CTRL",         action = action.PasteFrom("Clipboard")                                 },
+  -- { key = "p",          mods = "CTRL",         action = action.PasteFrom("Clipboard")                                 },
   { key = "v",          mods = "SUPER",        action = action.PasteFrom("Clipboard")                                 },
   { key = "f",          mods = "SUPER",        action = action.Search { CaseInSensitiveString = "" }                  },
   { key = "/",          mods = "SUPER",        action = action.Search { CaseInSensitiveString = "" }                  },
@@ -152,7 +152,7 @@ config.keys = {
                                                           action.EmitEvent "set-previous-workspace"
                                                 }
   },
-  { key = "t",          mods = "CTRL",         action = action.SpawnTab("DefaultDomain")                              },
+  -- { key = "t",          mods = "CTRL",         action = action.SpawnTab("DefaultDomain")                              },
   { key = "t",          mods = "SUPER",        action = action.SpawnTab("DefaultDomain")                              },
   { key = "t",          mods = "LEADER",       action = action.ShowLauncherArgs { flags = "TABS" }                    },
   { key = "v",          mods = "LEADER",       action = action.ActivateCopyMode                                       },
@@ -160,11 +160,11 @@ config.keys = {
   { key = "w",          mods = "SUPER",        action = action.CloseCurrentPane { confirm = false },                  },
   { key = "[",          mods = "SUPER|SHIFT",  action = action.ActivateTabRelative(-1)                                },
   { key = "]",          mods = "SUPER|SHIFT",  action = action.ActivateTabRelative(1)                                 },
-  { key = "y",          mods = "CTRL",         action = action.Multiple {
-                                                          action.CopyTo("ClipboardAndPrimarySelection"),
-                                                          action.ClearSelection
-                                                        }
-  },
+  -- { key = "y",          mods = "CTRL",         action = action.Multiple {
+  --                                                        action.CopyTo("ClipboardAndPrimarySelection"),
+  --                                                        action.ClearSelection
+  --                                                      }
+  -- },
   { key = "z",          mods = "LEADER",       action = action.TogglePaneZoomState,                                   },
   { key = "DownArrow",  mods = "ALT",          action = action.ActivatePaneDirection("Down")                          },
   { key = "DownArrow",  mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Down")                          },
@@ -181,31 +181,31 @@ config.keys = {
   { key = "UpArrow",    mods = "SUPER|ALT",    action = action.ActivatePaneDirection("Up")                            },
   { key = "UpArrow",    mods = "SHIFT",        action = action.ScrollByLine(-1)                                       },
   { key = "0",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-reset"                       },
-  { key = "0",          mods = "CTRL",         action = action.ResetFontSize                                          },
+  -- { key = "0",          mods = "CTRL",         action = action.ResetFontSize                                          },
   { key = "0",          mods = "SUPER",        action = action.ResetFontSize                                          },
   { key = "-",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-minus"                       },
-  { key = "-",          mods = "CTRL",         action = action.DecreaseFontSize                                       },
+  -- { key = "-",          mods = "CTRL",         action = action.DecreaseFontSize                                       },
   { key = "-",          mods = "SUPER",        action = action.DecreaseFontSize                                       },
   { key = "=",          mods = "ALT",          action = action.EmitEvent "toggle-opacity-plus"                        },
-  { key = "=",          mods = "CTRL",         action = action.IncreaseFontSize                                       },
+  -- { key = "=",          mods = "CTRL",         action = action.IncreaseFontSize                                       },
   { key = "=",          mods = "SUPER",        action = action.IncreaseFontSize                                       },
   { key = "[",          mods = "ALT",          action = action.ActivateTabRelative(-1)                                },
-  { key = "[",          mods = "ALT|CTRL",     action = action.Multiple {
-                                                          action.SwitchWorkspaceRelative(-1),
-                                                          action.EmitEvent "set-previous-workspace"
-                                                        }
-  },
+  -- { key = "[",          mods = "ALT|CTRL",     action = action.Multiple {
+  --                                                        action.SwitchWorkspaceRelative(-1),
+  --                                                        action.EmitEvent "set-previous-workspace"
+  --                                                      }
+  -- },
   { key = "[",          mods = "SUPER|ALT",    action = action.Multiple {
                                                           action.SwitchWorkspaceRelative(-1),
                                                           action.EmitEvent "set-previous-workspace"
                                                         }
   },
   { key = "]",          mods = "ALT",          action = action.ActivateTabRelative(1)                                 },
-  { key = "]",          mods = "ALT|CTRL",     action = action.Multiple {
-                                                          action.SwitchWorkspaceRelative(1),
-                                                          action.EmitEvent "set-previous-workspace"
-                                                        }
-  },
+  -- { key = "]",          mods = "ALT|CTRL",     action = action.Multiple {
+  --                                                        action.SwitchWorkspaceRelative(1),
+  --                                                        action.EmitEvent "set-previous-workspace"
+  --                                                      }
+  -- },
   { key = "]",          mods = "SUPER|ALT",    action = action.Multiple {
                                                           action.SwitchWorkspaceRelative(1),
                                                           action.EmitEvent "set-previous-workspace"
@@ -373,7 +373,7 @@ config.mouse_bindings = {
   { event = { Up   = { streak = 1, button = "Left"   }}, mods = "NONE", action = action.Nop },
   { event = { Up   = { streak = 2, button = "Left"   }}, mods = "NONE", action = action.Multiple { action.CopyTo "ClipboardAndPrimarySelection", action.ClearSelection }},
   { event = { Up   = { streak = 3, button = "Left"   }}, mods = "NONE", action = action.Multiple { action.CopyTo "ClipboardAndPrimarySelection", action.ClearSelection }},
-  { event = { Up   = { streak = 1, button = "Left"   }}, mods = "CTRL", action = action.OpenLinkAtMouseCursor  },
+  -- { event = { Up   = { streak = 1, button = "Left"   }}, mods = "CTRL", action = action.OpenLinkAtMouseCursor  },
 }
 
 -- Font
