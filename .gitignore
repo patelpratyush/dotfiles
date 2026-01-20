@@ -19,3 +19,7 @@
 .DS_Store
 *.BAk
 *.bak
+
+# local secrets
+home/.zshrc.private
+home/.zshrc.local
