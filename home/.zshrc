@@ -214,3 +214,4 @@ export PATH="/usr/local/opt/python@3.14/libexec/bin:$PATH"
 
 # opencode
 export PATH=/Users/pratyush/.opencode/bin:$PATH
+[ -f "$HOME/.zshrc.private" ] && source "$HOME/.zshrc.private"
