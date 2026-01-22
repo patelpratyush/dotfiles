@@ -398,7 +398,7 @@ config.enable_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = true
-config.status_update_interval = 1000
+config.status_update_interval = 2000
 config.tab_bar_at_bottom = false
 config.tab_max_width = 35
 config.use_fancy_tab_bar = false
@@ -457,16 +457,14 @@ wezterm.on("update-status", function(window, pane)
     cwd = ""
   end
 
-  -- RAM usage
+  -- Trim .local from hostname
+  local hostname = custom.hostname.current:gsub("%.local$", "")
+
+  -- RAM usage (simplified - only percentage)
   local ram_percent = "..."
-  local ram_gb = "..."
-  local success_gb, stdout_gb = wezterm.run_child_process({"sh", "-c", "ps -caxm -orss= | awk '{sum+=$1} END {print sum/1024/1024}'"})
   local success_pct, stdout_pct = wezterm.run_child_process({"sh", "-c", "ps -A -o %mem | awk '{s+=$1} END {print s}'"})
-  if success_gb then
-    ram_gb = string.format("%.1fGB", tonumber(stdout_gb) or 0)
-  end
   if success_pct then
-    ram_percent = string.format("%.1f%%", tonumber(stdout_pct) or 0)
+    ram_percent = string.format("%.0f%%", tonumber(stdout_pct) or 0)
   end
 
   -- Left status (left of the tab line)
@@ -488,11 +486,8 @@ wezterm.on("update-status", function(window, pane)
     { Text       = nerdfonts.ple_right_half_circle_thick .. " " },
   }))
 
-  -- Right status
+  -- Right status (clean and efficient - essential info only)
   window:set_right_status(wezterm.format({
-    -- Wezterm has a built-in nerd fonts
-    -- https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html
-    --
     { Text       = " "                                   },
     { Background = { Color = colors.background }         },
     { Foreground = { Color = colors.ansi[4] }            },
@@ -509,51 +504,23 @@ wezterm.on("update-status", function(window, pane)
 
     { Text       = " "                                   },
     { Background = { Color = colors.background }         },
-    { Foreground = { Color = colors.ansi[6] }            },
-    { Text       = nerdfonts.ple_left_half_circle_thick  },
-    { Background = { Color = colors.ansi[6] }            },
-    { Foreground = { Color = colors.background }         },
-    { Text       = nerdfonts.fa_user .. " "              },
-    { Background = { Color = colors.ansi[1] }            },
-    { Foreground = { Color = colors.foreground }         },
-    { Text       = " " .. custom.username                },
-    { Background = { Color = colors.background }         },
-    { Foreground = { Color = colors.ansi[1] }            },
-    { Text       = nerdfonts.ple_right_half_circle_thick },
-
-    { Text       = " "                                   },
-    { Background = { Color = colors.background }         },
     { Foreground = { Color = colors.ansi[7] }            },
     { Text       = nerdfonts.ple_left_half_circle_thick  },
     { Background = { Color = colors.ansi[7] }            },
-    { Foreground = { Color = colors.ansi[1] }            },
-    { Text       = nerdfonts.md_monitor .. " "           },
-    { Background = { Color = colors.ansi[1] }            },
-    { Foreground = { Color = colors.foreground }         },
-    { Text       = " " .. custom.hostname.current        },
-    { Background = { Color = colors.background }         },
-    { Foreground = { Color = colors.ansi[1] }            },
-    { Text       = nerdfonts.ple_right_half_circle_thick },
-
-    { Text       = " "                                   },
-    { Background = { Color = colors.background }         },
-    { Foreground = { Color = colors.ansi[5] }            },
-    { Text       = nerdfonts.ple_left_half_circle_thick  },
-    { Background = { Color = colors.ansi[5] }            },
     { Foreground = { Color = colors.background }         },
     { Text       = nerdfonts.md_memory .. " "            },
     { Background = { Color = colors.ansi[1] }            },
     { Foreground = { Color = colors.foreground }         },
-    { Text       = " " .. ram_percent .. " " .. ram_gb   },
+    { Text       = " " .. ram_percent                    },
     { Background = { Color = colors.background }         },
     { Foreground = { Color = colors.ansi[1] }            },
     { Text       = nerdfonts.ple_right_half_circle_thick },
 
     { Text       = " "                                   },
     { Background = { Color = colors.background }         },
-    { Foreground = { Color = colors.ansi[8]}             },
+    { Foreground = { Color = colors.ansi[5]}             },
     { Text       = nerdfonts.ple_left_half_circle_thick  },
-    { Background = { Color = colors.ansi[8]}             },
+    { Background = { Color = colors.ansi[5]}             },
     { Foreground = { Color = colors.background }         },
     { Text       = nerdfonts.md_calendar_clock .. " "    },
     { Background = { Color = colors.ansi[1] }            },
@@ -562,7 +529,6 @@ wezterm.on("update-status", function(window, pane)
     { Background = { Color = colors.background }         },
     { Foreground = { Color = colors.ansi[1] }            },
     { Text       = nerdfonts.ple_right_half_circle_thick },
-
   }))
 
 end)

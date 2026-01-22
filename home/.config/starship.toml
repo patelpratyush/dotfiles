@@ -17,13 +17,22 @@ scan_timeout = 100  # Increase timeout for scanning directories (default is 30ms
 [hostname]
 ssh_only = false
 format = '[$hostname](bold yellow) '
-trim_at = "."
+trim_at = ".local"
 disabled = false
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
+
+[status]
+disabled = false
+format = "[$symbol$status]($style) "
+symbol = "❌ "
+not_executable_symbol = "🚫 "
+not_found_symbol = "🔍 "
+sigint_symbol = "🧱 "
+signal_symbol = "⚡ "
 
 #  
 # configure directory
@@ -34,11 +43,29 @@ truncate_to_repo = true # truncates directory to root folder if in github repo
 style = "bold italic blue"
 
 [cmd_duration]
-min_time = 4
+min_time = 2000
 show_milliseconds = false
 disabled = false
 style = "bold italic red"
-# command_timeout = 999999
+format = "took [$duration]($style) "
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡"
+discharging_symbol = "💀"
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "bold yellow"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
 
 [aws]
 symbol = "  "
