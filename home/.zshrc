@@ -166,8 +166,12 @@ bindkey '^[[B' history-search-forward
 
 alias ls="eza --icons=always"
 # ---- Zoxide (better cd) ----
-alias cd="z"
-eval "$(zoxide init zsh)"
+# Only override cd in interactive shells
+if [[ $- == *i* ]]; then
+  eval "$(zoxide init zsh --cmd cd)"
+else
+  eval "$(zoxide init zsh)"
+fi
 
 # Initialize starship (only once, after oh-my-zsh)
 eval "$(starship init zsh)"
@@ -212,9 +216,17 @@ export PATH="/Users/pratyush/.antigravity/antigravity/bin:$PATH"
 cursor() { /Applications/Cursor.app/Contents/Resources/app/bin/code "$@" 2>/dev/null; }
 export PATH="/usr/local/opt/python@3.14/libexec/bin:$PATH"
 
-# opencode
-export PATH=/Users/pratyush/.opencode/bin:$PATH
 [ -f "$HOME/.zshrc.private" ] && source "$HOME/.zshrc.private"
 
 # Added by Antigravity
 export PATH="/Users/pratyush/.antigravity/antigravity/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# bun completions
+[ -s "/Users/pratyush/.bun/_bun" ] && source "/Users/pratyush/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+alias claude-mem='/Users/pratyush/.bun/bin/bun "/Users/pratyush/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
