@@ -230,3 +230,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 alias claude-mem='/Users/pratyush/.bun/bin/bun "/Users/pratyush/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+# opencode
+export PATH=/Users/pratyush/.opencode/bin:$PATH
