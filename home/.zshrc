@@ -233,3 +233,5 @@ alias claude-mem='/Users/pratyush/.bun/bin/bun "/Users/pratyush/.claude/plugins/
 
 # opencode
 export PATH=/Users/pratyush/.opencode/bin:$PATH
+
+
