@@ -1,0 +1,77 @@
+# ── Shell ─────────────────────────────────────────────────────────────────────
+shell-integration = zsh
+
+# ── Theme ─────────────────────────────────────────────────────────────────────
+# Auto-switches with system appearance (dark: Frappe, light: Mocha — matching WezTerm)
+theme = dark:Catppuccin Frappe,light:Catppuccin Mocha
+
+# ── Font ──────────────────────────────────────────────────────────────────────
+font-family = JetBrainsMonoNL Nerd Font
+font-size = 12
+bold-is-bright = true
+
+# ── Window ────────────────────────────────────────────────────────────────────
+# Integrates tab bar into titlebar (required for tabs; "hidden" disables native tabs)
+macos-titlebar-style = tabs
+window-padding-x = 3
+# WezTerm had top=10, bottom=3; Ghostty y-padding is symmetric
+window-padding-y = 10
+window-width = 120
+window-height = 40
+
+# ── Cursor ────────────────────────────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = true
+
+# ── Scrollback ────────────────────────────────────────────────────────────────
+scrollback-limit = 10000
+
+# ── Mouse ─────────────────────────────────────────────────────────────────────
+# Copies selected text to clipboard on selection (matches WezTerm double/triple-click copy)
+copy-on-select = clipboard
+mouse-hide-while-typing = false
+
+# ── Keybindings ───────────────────────────────────────────────────────────────
+# Most standard bindings (Cmd+C/V, Cmd+T/W/Q, Cmd+0/-/=, Cmd+1-9,
+# Cmd+Shift+[/], Cmd+Shift+Enter zoom, Cmd+D splits, Cmd+K clear,
+# Cmd+Home/End/PgUp/PgDn scroll) are already Ghostty defaults — not repeated here.
+
+# Open new tab instead of new window (tab-only workflow)
+keybind = super+n=new_tab
+
+# Alt+[/] → navigate tabs (WezTerm had these; not in Ghostty defaults)
+keybind = alt+bracket_left=previous_tab
+keybind = alt+bracket_right=next_tab
+
+# Alt+1-9 → go to tab by index (WezTerm had these; not in Ghostty defaults)
+keybind = alt+one=goto_tab:1
+keybind = alt+two=goto_tab:2
+keybind = alt+three=goto_tab:3
+keybind = alt+four=goto_tab:4
+keybind = alt+five=goto_tab:5
+keybind = alt+six=goto_tab:6
+keybind = alt+seven=goto_tab:7
+keybind = alt+eight=goto_tab:8
+keybind = alt+nine=goto_tab:9
+
+# Alt+arrows → navigate splits (Ghostty default is Super+Alt+arrows; reassigning to plain Alt)
+keybind = alt+arrow_up=goto_split:up
+keybind = alt+arrow_down=goto_split:down
+keybind = alt+arrow_left=goto_split:left
+keybind = alt+arrow_right=goto_split:right
+
+# Scroll by line (Shift+arrows conflict with selection; using Ctrl+Shift instead)
+keybind = ctrl+shift+arrow_up=scroll_page_lines:-1
+keybind = ctrl+shift+arrow_down=scroll_page_lines:1
+
+# ── Not available in Ghostty ──────────────────────────────────────────────────
+# - Leader key / key tables (use tmux for that workflow)
+# - Named workspaces (Ghostty uses native macOS windows)
+# - Custom status bar (left/right status with RAM, clock, cwd)
+# - Tab title icons (nerd font icons per process)
+# - QuickSelect patterns (URL/IP/MAC copy)
+# - Copy mode (vi-like) — no equivalent action
+# - Flash screen effect
+# - Window focus dimming (inactive_pane_hsb)
+# - gcloud auth event handler
+# - Search (Cmd+F) — no built-in terminal search
