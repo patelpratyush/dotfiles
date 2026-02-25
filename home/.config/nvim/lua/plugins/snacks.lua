@@ -4,5 +4,13 @@ return {
     explorer = {
       hidden = true,
     },
+    picker = {
+      sources = {
+        explorer = {
+          hidden = true,
+          ignored = true,
+        },
+      },
+    },
   },
 }
